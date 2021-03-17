@@ -18,21 +18,38 @@ const generatePokemonPromises = () => Array(150).fill().map((_, index) =>
 const generateHtml = pokemons => pokemons.reduce((accumulator, { name, id, types, stats }) => {
     const elementTypes = types.map(typeInfo => typeInfo.type.name)
 
+    if(id !== 90) {
+        accumulator += `
+            <li class="card-list">
+                <div class="card ${elementTypes[0]}">
+                    <img class="card-image" alt="${name}" src="https://pokeres.bastionbot.org/images/pokemon/${id}.png"/>
+                </div>
+                    <h2 class="card-title">${id}. ${name}</h2>
+                    ${generateTypeImages(elementTypes)}
+                    <ul class="stats-list">
+                        <li><b>HP:</b> ${stats[0].base_stat}</li>
+                        <li><b>Attack:</b> ${stats[1].base_stat}</li>
+                        <li><b>Defense:</b> ${stats[2].base_stat}</li>
+                    </ul>
+            </li>
+        `
+    } else {
+        accumulator += `
+            <li class="card-list">
+                <div class="card water">
+                    <img class="card-image" alt="Shellder" src="https://pokeres.bastionbot.org/images/pokemon/90.png"/>
+                </div>
+                    <h2 class="card-title">90. Shellder</h2>
+                    <img class="element-types" alt="element types" src="https://play.pokemonshowdown.com/sprites/types/Water.png"/>
+                    <ul class="stats-list">
+                        <li><b>HP:</b> 30</li>
+                        <li><b>Attack:</b> 65</li>
+                        <li><b>Defense:</b> 100</li>
+                    </ul>
+            </li>
+        `
+    }
 
-    accumulator += `
-        <li class="card-list">
-            <div class="card ${elementTypes[0]}">
-                <img class="card-image" alt="${name}" src="https://pokeres.bastionbot.org/images/pokemon/${id}.png"/>
-            </div>
-                <h2 class="card-title">${id}. ${name}</h2>
-                ${generateTypeImages(elementTypes)}
-                <ul class="stats-list">
-                    <li><b>HP:</b> ${stats[0].base_stat}</li>
-                    <li><b>Attack:</b> ${stats[1].base_stat}</li>
-                    <li><b>Defense:</b> ${stats[2].base_stat}</li>
-                </ul>
-        </li>
-    `
     return accumulator
 }, '')
 

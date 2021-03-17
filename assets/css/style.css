@@ -26,7 +26,13 @@ h1 {
 	background-color: #fff;
 	color: #000;
 	list-style: none;
-	border: #000 solid 2px;
+	border: #000 solid 1px;
+	transition-duration: 0.2s;
+}
+
+.card-list:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 6px 20px rgb(0 0 0 / 45%);
 }
 
 .card {
@@ -113,10 +119,6 @@ h1 {
 
 .normal {
 	background-color: #F5F5F5;
-}
-
-.card-list:hover {
-	animation: bounce 0.5s linear;
 }
 
 .card-title {

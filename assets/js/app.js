@@ -34,6 +34,7 @@ const generateHtml = pokemons => pokemons.reduce((accumulator, { name, id, types
             </li>
         `
     } else {
+        console.log("Its working " + 90)
         accumulator += `
             <li class="card-list">
                 <div class="card water">
